@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Shorts Studio helps creators plan, write, schedule, and estimate revenue for short-form videos.">
+    <title>Shorts Studio</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Shorts Studio home"><span class="brand-mark">▶</span> Shorts Studio</a>
+      <span class="status"><span class="status-dot"></span> Creator workspace</span>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">YOUR SHORT-FORM COMMAND CENTER</p>
+          <h1>Turn one idea into a <span>content system.</span></h1>
+          <p class="hero-copy">Write scroll-stopping videos, find a smart posting window, and keep an eye on the revenue that makes your work sustainable.</p>
+        </div>
+        <div class="hero-stat"><strong id="queue-count">0</strong><span>ideas in queue</span></div>
+      </section>
+
+      <div class="dashboard-grid">
+        <section class="card planner-card">
+          <div class="card-heading">
+            <div><p class="eyebrow">01 / PLAN</p><h2>Build your next short</h2></div>
+            <span class="step-badge">Free toolkit</span>
+          </div>
+          <form id="planner-form">
+            <label for="topic">What is your video about?</label>
+            <input id="topic" name="topic" required placeholder="e.g. 3 budget meals for busy students">
+            <div class="form-row">
+              <div>
+                <label for="audience">Audience</label>
+                <select id="audience" name="audience">
+                  <option>Curious beginners</option>
+                  <option>Busy professionals</option>
+                  <option>Creators and entrepreneurs</option>
+                  <option>Fitness and wellness fans</option>
+                  <option>Gamers and tech fans</option>
+                </select>
+              </div>
+              <div>
+                <label for="tone">Tone</label>
+                <select id="tone" name="tone">
+                  <option>Helpful</option>
+                  <option>Bold</option>
+                  <option>Playful</option>
+                  <option>Inspirational</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="platform">Primary platform</label>
+                <select id="platform" name="platform">
+                  <option value="YouTube Shorts">YouTube Shorts</option>
+                  <option value="TikTok">TikTok</option>
+                  <option value="Instagram Reels">Instagram Reels</option>
+                  <option value="Facebook Reels">Facebook Reels</option>
+                </select>
+              </div>
+              <div>
+                <label for="length">Length</label>
+                <select id="length" name="length">
+                  <option value="30">30 seconds</option>
+                  <option value="45">45 seconds</option>
+                  <option value="60">60 seconds</option>
+                </select>
+              </div>
+            </div>
+            <button class="primary-button" type="submit">Generate content kit <span>→</span></button>
+          </form>
+        </section>
+
+        <section class="card kit-card" aria-live="polite">
+          <div class="card-heading">
+            <div><p class="eyebrow">02 / CREATE</p><h2 id="kit-title">Your content kit</h2></div>
+            <span id="kit-platform" class="platform-pill">Ready when you are</span>
+          </div>
+          <div class="empty-state" id="empty-state">
+            <div class="empty-icon">✦</div>
+            <p>Enter a topic to generate a hook, script outline, caption, and hashtags tailored to your audience.</p>
+          </div>
+          <div class="kit-results hidden" id="kit-results">
+            <div class="result-block"><div class="result-label">Hook <button data-copy="hook" class="copy-button" type="button">Copy</button></div><p id="hook"></p></div>
+            <div class="result-block"><div class="result-label">Script outline <button data-copy="script" class="copy-button" type="button">Copy</button></div><p id="script"></p></div>
+            <div class="result-block"><div class="result-label">Caption <button data-copy="caption" class="copy-button" type="button">Copy</button></div><p id="caption"></p></div>
+            <div class="hashtag-row" id="hashtags"></div>
+            <button class="secondary-button" id="save-idea" type="button">Save to content queue</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="lower-grid">
+        <section class="card">
+          <div class="card-heading"><div><p class="eyebrow">03 / PUBLISH</p><h2>Best time to post</h2></div><span class="timezone">Local time</span></div>
+          <label for="schedule-platform">Platform</label>
+          <select id="schedule-platform">
+            <option>YouTube Shorts</option><option>TikTok</option><option>Instagram Reels</option><option>Facebook Reels</option>
+          </select>
+          <div class="recommendation"><span class="sun-icon">☀</span><div><strong id="recommended-time">7:00 PM – 9:00 PM</strong><p id="recommendation-copy">A strong starting window for evening viewers.</p></div></div>
+          <p class="fine-print">Use this as a starting point. After 10 posts, compare it with your platform analytics and adjust.</p>
+        </section>
+        <section class="card earnings-card">
+          <div class="card-heading"><div><p class="eyebrow">04 / EARN</p><h2>Revenue runway</h2></div><span class="revenue-pill">Estimate</span></div>
+          <div class="earnings-inputs">
+            <label>Monthly views <input id="monthly-views" type="number" min="0" step="1000" value="100000"></label>
+            <label>RPM ($) <input id="rpm" type="number" min="0" step="0.01" value="0.04"></label>
+          </div>
+          <div class="earnings-total"><span>Estimated monthly ad revenue</span><strong id="revenue-total">$4.00</strong></div>
+          <p class="fine-print">Ad revenue varies by platform, audience, region, and eligibility. Add sponsorships or affiliate income for a complete forecast.</p>
+        </section>
+      </div>
+
+      <section class="queue-section">
+        <div class="queue-heading"><div><p class="eyebrow">CONTENT QUEUE</p><h2>Ideas worth making</h2></div><button id="clear-queue" class="text-button hidden" type="button">Clear queue</button></div>
+        <div id="queue" class="queue-list"><p class="queue-empty">Your saved ideas will appear here.</p></div>
+      </section>
+    </main>
+    <footer><span>Shorts Studio</span><span>Plan consistently. Publish intentionally.</span></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
