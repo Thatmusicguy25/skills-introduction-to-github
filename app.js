@@ -29,8 +29,13 @@ function generateKit(event) {
   $("#hook").textContent = `Stop scrolling: here’s the ${tone} way to understand ${topic}.`;
   $("#script").textContent = `0–3s: Start with the hook. 3–${Math.round(length * .75)}s: Show 3 practical takeaways about ${topic} for ${audience.toLowerCase()}, using one visual example per point. ${Math.round(length * .75)}–${length}s: Recap the best takeaway and invite viewers to save and follow for the next part.`;
   $("#caption").textContent = `Would you try this? Save this ${topic} guide and share it with someone who needs it. What should I cover next?`;
-  $("#hashtags").innerHTML = ["#shorts", `#${tag}`, "#creator", "#tips", `#${platform.split(" ")[0].toLowerCase()}`]
-    .map((tagName) => `<span class="hashtag">${tagName}</span>`).join("");
+  $("#hashtags").replaceChildren(...["#shorts", `#${tag}`, "#creator", "#tips", `#${platform.split(" ")[0].toLowerCase()}`]
+    .map((tagName) => {
+      const hashtag = document.createElement("span");
+      hashtag.className = "hashtag";
+      hashtag.textContent = tagName;
+      return hashtag;
+    }));
   $("#kit-title").textContent = `${topic} kit`;
   $("#kit-platform").textContent = platform;
   $("#empty-state").classList.add("hidden");
